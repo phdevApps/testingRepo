@@ -6,7 +6,7 @@ export default function Home() {
   const [data, setData] = useState({})
 
   const fetchData = async () => {
-    const res = await fetch(`http://localhost:3000/api/data`)
+    const res = await fetch(`/api/data`)
     if (res.ok) {
       setData(await res.json())
     } else {
