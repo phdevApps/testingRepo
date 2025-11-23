@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "buildw": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
     "build:2threads": "TURBOPACK_WORKERS=1 next build"
