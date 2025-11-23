@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:2threads": "TURBOPACK_WORKERS=1 next build"
   },
   "dependencies": {
     "next": "16.0.3",
