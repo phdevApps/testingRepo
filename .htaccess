@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Forward all requests starting with /app to Next.js
+RewriteCond %{REQUEST_URI} ^/app
+RewriteRule ^(.*)$ http://localhost:3000/$1 [P,L]
+
+# Optional: proxy websockets if Next.js uses them
+ProxyPass /app ws://localhost:3000/
+ProxyPassReverse /app ws://localhost:3000/
