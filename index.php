@@ -1,24 +1,27 @@
 <?php
-$nextjs_url = "http://localhost:5173" . $_SERVER['REQUEST_URI'];
+// Set headers for JSON response
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *'); // allow requests from anywhere
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
 
-// Forward headers
-$headers = [];
-foreach (getallheaders() as $name => $value) {
-    $headers[] = "$name: $value";
+// Simple routing
+$method = $_SERVER['REQUEST_METHOD'];
+
+if ($method === 'GET') {
+    $users = [
+        ['id' => 1, 'name' => 'Ahmed'],
+        ['id' => 2, 'name' => 'Sara'],
+    ];
+    echo json_encode($users);
+} elseif ($method === 'POST') {
+    $input = json_decode(file_get_contents('php://input'), true);
+    $response = [
+        'status' => 'success',
+        'received' => $input
+    ];
+    echo json_encode($response);
+} else {
+    http_response_code(405);
+    echo json_encode(['error' => 'Method not allowed']);
 }
-
-// Fetch Next.js response
-$options = [
-    "http" => [
-        "header" => implode("\r\n", $headers),
-        "method" => $_SERVER['REQUEST_METHOD'],
-        "content" => file_get_contents("php://input")
-    ]
-];
-
-$context = stream_context_create($options);
-$response = file_get_contents($nextjs_url, false, $context);
-
-// Return response
-http_response_code($http_response_header[0] ?? 200);
-echo $response;
