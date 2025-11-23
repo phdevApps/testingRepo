@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 40, "column": 0}, "map": {"version":3,"sources":["file:///Users/xdev/Desktop/ws/testing/my-app/app/api/data/route.js"],"sourcesContent":["// Example for GET\nexport async function GET(request) {\n  return new Response(JSON.stringify({ message: \"Hello\" }), {\n    status: 200,\n    headers: { \"Content-Type\": \"application/json\" },\n  });\n}\n\n// Example for POST\nexport async function POST(request) {\n  const body = await request.json();\n  return new Response(JSON.stringify({ success: true }));\n}\n"],"names":[],"mappings":"AAAA,kBAAkB;;;;;;;AACX,eAAe,IAAI,OAAO;IAC/B,OAAO,IAAI,SAAS,KAAK,SAAS,CAAC;QAAE,SAAS;IAAQ,IAAI;QACxD,QAAQ;QACR,SAAS;YAAE,gBAAgB;QAAmB;IAChD;AACF;AAGO,eAAe,KAAK,OAAO;IAChC,MAAM,OAAO,MAAM,QAAQ,IAAI;IAC/B,OAAO,IAAI,SAAS,KAAK,SAAS,CAAC;QAAE,SAAS;IAAK;AACrD"}}]
+}

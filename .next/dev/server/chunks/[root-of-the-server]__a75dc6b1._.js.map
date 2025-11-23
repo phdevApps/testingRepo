@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///Users/xdev/Desktop/ws/testing/my-app/app/api/data/route.js"],"sourcesContent":["import { NextResponse } from \"next/server\";\n\nexport  async function GET(request) {\n    return NextResponse.json({\n        msg:\"hi\"\n    })\n}"],"names":[],"mappings":";;;;AAAA;;AAEQ,eAAe,IAAI,OAAO;IAC9B,OAAO,6JAAY,CAAC,IAAI,CAAC;QACrB,KAAI;IACR;AACJ"}}]
+}
