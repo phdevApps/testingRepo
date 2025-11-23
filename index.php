@@ -1,27 +1,27 @@
 <?php
-// Set headers for JSON response
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *'); // allow requests from anywhere
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
+header('Content-Type: text/html'); // match the content type of the proxied resource
 
-// Simple routing
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method === 'GET') {
-    $users = [
-        ['id' => 1, 'name' => 'Ahmed'],
-        ['id' => 2, 'name' => 'Sara'],
-    ];
-    echo json_encode($users);
-} elseif ($method === 'POST') {
-    $input = json_decode(file_get_contents('php://input'), true);
-    $response = [
-        'status' => 'success',
-        'received' => $input
-    ];
-    echo json_encode($response);
+    $url = 'http://localhost:5173/'; // the URL you want to fetch
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // follow redirects
+    curl_setopt($ch, CURLOPT_HEADER, false); // don't include headers in output
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        http_response_code(500);
+        echo "Error fetching the URL: " . curl_error($ch);
+    } else {
+        echo $response;
+    }
+
+    curl_close($ch);
 } else {
     http_response_code(405);
-    echo json_encode(['error' => 'Method not allowed']);
+    echo "Method not allowed";
 }
