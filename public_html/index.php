@@ -1,6 +1,6 @@
 <?php
 // URL of the Node.js server
-$nodeUrl = 'http://localhost:3000' . $_SERVER['REQUEST_URI'];
+$nodeUrl = 'http://localhost:8080' . $_SERVER['REQUEST_URI'];
 
 // Initialize cURL
 $ch = curl_init($nodeUrl);
