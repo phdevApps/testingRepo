@@ -1,0 +1,1 @@
+fetch('http://localhost:3000').then(it=>it.text()).then(it=>console.log(it))
